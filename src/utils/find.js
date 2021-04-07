@@ -25,6 +25,7 @@ export function getSuccessorsValue(parentValue){
       swapAndSave(4, 1);
       swapAndSave(4, 5);
       swapAndSave(4, 7);
+      swapAndSave(4, 3);
       break;
     case 5:
       swapAndSave(5, 2);
@@ -38,14 +39,12 @@ export function getSuccessorsValue(parentValue){
     case 7:
       swapAndSave(7, 4);
       swapAndSave(7, 8);
-      swapAndSave(1, 4);
+      swapAndSave(7, 6);
       break;
     case 8:
       swapAndSave(8, 5);
       swapAndSave(8, 7);
       break;
-      default:
-        break;
   }
 
   function swapAndSave(a, b){

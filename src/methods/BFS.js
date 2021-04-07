@@ -1,11 +1,42 @@
-export class BFS {
+export default class BFS {
   constructor(initial, goals){
     this._initial = initial;
     this._goals = goals;
-    this.path = [];
+    this._path = [];
+		this._visits = 0;
   }
 
+	get visits() {
+		return this._visits;
+	}
+
+	get path() {
+		return this._path;
+	}
+
+
   search(){
-    console.log(aaa)
+    let current = this._initial;
+		let amount = [];
+    while(current !== null && JSON.stringify(current.value) !== JSON.stringify(this._goals.value)){
+      
+      current.successors()
+      .forEach(state => {
+        amount.push(state);
+      })
+
+      current = amount.shift();
+			this._visits++;
+    }
+
+		if(current !== null){
+			this._path.push(current);
+
+			while(current && current.parent !== null){
+				current = current.parent;
+				this._path.push(current);
+			}
+		}
+    return current;
   }
 }
