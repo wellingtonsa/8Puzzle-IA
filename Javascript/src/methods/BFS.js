@@ -20,18 +20,14 @@ export default class BFS {
 		let amount = [];
     while(current !== null && JSON.stringify(current.value) !== JSON.stringify(this._goals.value)){
       
-      let promise = new Promise((resolve, reject) => {
-        current.successors()
-        .forEach(state => {
-          amount.push(state);
-        })
-
-        current = amount.shift();
-
-        resolve();
+      current.successors()
+      .forEach(state => {
+        amount.push(state);
       })
 
-      promise.then(res => this._visits++);
+      current = amount.shift();
+			this._visits++;
+      console.table(current)
     }
 
 		if(current !== null){
